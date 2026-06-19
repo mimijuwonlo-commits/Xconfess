@@ -277,6 +277,7 @@ mod adversarial {
     #[test]
     fn send_tip_and_proof_none_produce_equal_totals() {
         let env = Env::default();
+        env.mock_all_auths();
         let contract_id = env.register(AnonymousTipping, ());
         let c = mk_client(&env, &contract_id);
         c.init(&contract_id);
@@ -295,6 +296,7 @@ mod adversarial {
     #[test]
     fn tip_without_explicit_init_returns_token_configuration_error() {
         let env = Env::default();
+        env.mock_all_auths();
         let contract_id = env.register(AnonymousTipping, ());
         let c = mk_client(&env, &contract_id);
         // No c.init(&id) call — storage defaults to 0 via `unwrap_or`

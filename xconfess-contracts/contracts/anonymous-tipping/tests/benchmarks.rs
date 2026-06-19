@@ -4,6 +4,7 @@ use soroban_sdk::{testutils::Address as _, Address, Env};
 #[test]
 fn benchmark_send_tip() {
     let env = Env::default();
+    env.mock_all_auths();
     let contract_id = env.register(AnonymousTipping, ());
     let client = AnonymousTippingClient::new(&env, &contract_id);
 
@@ -25,6 +26,7 @@ fn benchmark_send_tip() {
 #[test]
 fn benchmark_get_tips() {
     let env = Env::default();
+    env.mock_all_auths();
     let contract_id = env.register(AnonymousTipping, ());
     let client = AnonymousTippingClient::new(&env, &contract_id);
 
